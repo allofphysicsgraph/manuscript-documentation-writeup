@@ -1,0 +1,54 @@
+% see https://en.wikibooks.org/wiki/LaTeX/Glossary
+% and https://www.overleaf.com/learn/latex/Glossaries
+
+\newglossaryentry{inference rule}{
+  name={inference rule},
+  plural={inference rules},
+  description={operate on expressions to produce new expressions}
+}
+
+
+\newglossaryentry{feed}{
+  name={feed},
+  plural={feeds},
+  description={used as input for an inference rule. An inference rule may require one or more "feed" values. A feed does not contain a relation like equality or inequality}
+}
+
+
+\newglossaryentry{expression}{
+  name={expression},
+  plural={expressions},
+  description={mathematical statements composed of symbols and operators. Each expression has at least three components: a left-hand side (LHS), a relation operator, and a right-hand side (RHS)}
+}
+
+\newglossaryentry{operator}{
+  name={operator},
+  plural={operators},
+  description={transforms applied to symbols}
+}
+
+\newglossaryentry{symbol}{
+  name={symbol},
+  plural={symbols},
+  description={variables and constants}
+}
+
+\newglossaryentry{relation operator}{
+  name={relation operator},
+  plural={relation operators},
+  description={separates the LHS and RHS of an \gls{expression}} %Examples include $=$, $\lt$, $\leq$, $\gt$, $\geq$} 
+  % TODO: why can't those be used in glossary?
+}
+
+
+\newglossaryentry{derivation}{
+  name={derivation},
+  plural={derivations},
+  description={comprised of \glspl{step}}
+}
+
+\newglossaryentry{step}{
+  name={step},
+  plural={steps},
+  description={relates \glspl{expression} by an \gls{inference rule}}
+}

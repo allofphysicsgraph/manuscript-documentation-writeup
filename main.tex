@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+% https://www.overleaf.com/learn/latex/Code_Highlighting_with_minted
+\usepackage{minted} % syntax highlighting for verbatim
+
+
+\usepackage{amsmath}
+%\usepackage{amsfonts}
+%\usepackage{amssymb}
+
+% https://www.overleaf.com/learn/latex/Indices
+% https://latex-tutorial.com/creating-index-latex/
+\usepackage{imakeidx}
+\makeindex[options=-c]
+% Compress intermediate blanks (ignoring leading and trailing blanks and tabs). By default, blanks in the index key are retained.
+
+\newcommand{\pdg}{Physics Derivation Graph}
+
+
+% margins of 1 inch:
+\setlength{\topmargin}{-.5in}
+\setlength{\textheight}{9in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\textwidth}{6.5in}
+
+% https://www.overleaf.com/learn/latex/Glossaries
+\usepackage[toc]{glossaries}
+%\usepackage{glossaries-extra}
+
+\makeglossaries % The command must be before the first glossary entry.
+
+% https://en.wikibooks.org/wiki/LaTeX/Glossary says
+% "define any number of \newglossaryentry and \newacronym glossary and acronym entries in your preamble"
+\input{glossary_entries}
+
+\usepackage[pdftex]{hyperref} % hyperlink equation and bibliographic citations
+
+\title{\pdg}
+\author{Ben Payne}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\input{introduction}
+
+\input{example_relation_frequency_and_period}
+
+\input{data_structure}
+
+\input{symbol_reuse}
+
+\input{spanning_physics}
+
+\clearpage
+%\backmatter % sections after "backmatter" do not get numbered
+
+\printglossaries
+
+\nocite{*} % causes LaTeX to include every entry in your .bib file.
+
+% https://www.overleaf.com/learn/latex/Bibtex_bibliography_styles
+% http://www-math.ucdenver.edu/~billups/courses/guides/annotated_bibliography.html
+\bibliographystyle{plain-annote}
+%\bibliography{biblio_bureaucracy}%,biblio_meetings}
+
+\bibliography{biblio_pdg}
+
+\printindex
+
+
+\end{document}

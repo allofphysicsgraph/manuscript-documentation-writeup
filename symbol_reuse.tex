@@ -1,0 +1,31 @@
+\section{Reuse of Symbols\label{sec:symbol_reuse}}
+
+ Symbol re-use is common in science and is addressed in the PDG by the use
+  of unique identifiers.
+  For example, \(c\) is commonly used to represent the speed of light, but
+  the same symbol is also used in the quadratic equation
+\begin{equation}
+a x^2+b x+c =0.
+\label{eq:quadratic}
+\end{equation}
+In Eq.~\ref{eq:quadratic}, \(c\) does not refer to the speed of light.
+This is distinguishable in the Physics Derivation Graph because the \(c\)
+  referring to the speed of light has a different numeric identifier than
+  the \(c\) used in Eq.~\ref{eq:quadratic}.
+
+
+Each time an expression, symbol, or inference rule is used in a step in the
+  \pdg{}, the unique identifier is referenced.
+  The referencing of unique node identifiers is what enables construction of
+  the graph.
+  For example, if Eq.~\ref{eq:period_freq_eq_1} is used in two distinct
+  derivations, the same expression is referenced.
+  Similarly, when the symbol \(T\) is used in any derivation, the associated
+  numeric identifier refers to period.
+  The symbol \(T\) used in another context would have a different unique
+  numeric identifier.
+This referencing of unique expressions, symbols, and inference rules is
+done using a numeric identifier (alphanumeric for inference rules).
+This uniqueness of expressions, symbols, and inference rules is a distinguishing feature of the \pdg{}.
+The \pdg{} is designed to show one instance of each
+expression, but feeds and inference rules may have multiple instances in the graph.

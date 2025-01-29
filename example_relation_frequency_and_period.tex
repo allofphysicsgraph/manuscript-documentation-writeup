@@ -1,0 +1,81 @@
+\subsection{Example: Relation between frequency and period\label{sec:period_freq_example}}
+
+\subsubsection{Narrative summary}
+A simple example of concepts in the \pdg{} is the relation between period, $T$, and linear frequency, $f$.
+The mathematical expression of the relation is $T=1/f$.
+To express frequency as a function of period, multiply both sides of the expression by $f$ to get a new expression, $T\ f=1$.
+  Finally, divide both sides of the second expression by $T$ to yield the third expression, $f=1/T$.
+
+\textit{Narrative-based analysis}: In this example, there are three equations: \(T=1/f\), \(T\ f=1\), and \(f=1/T\). (Some derivations involve inequalities, so for generality ``expressions" is used.)
+Each \gls{expression} is defined by a left-hand side (LHS), a \gls{relation operator} (here ``$=$"), and a right-hand side (RHS).
+Two instances of the \href{https://en.wikipedia.org/wiki/Equivalence_relation#Definition}{Equivalence relation} relate the three expressions.
+The relations between expressions are called \glspl{inference rule}.
+The generic form of the first inference rule used in the example is ``multiply both sides of an expression by a quantity to yield a new expression."
+Similarly, the second inference rule is generically, ``divide both sides of an expression by a quantity to yield a new expression."
+
+\subsubsection{Narrative with equations}
+Next, make the analysis more explicit by separating the equations from the text and by identifying the inference rules. 
+
+A simple example of concepts in the \pdg{} is the relation between period, $T$, and linear frequency, $f$.\\
+\textit{Inference rule}: Eq.~\ref{eq:period_eq_1_over_freq} is an initial equation.
+\begin{equation}
+T=1/f    
+\label{eq:period_eq_1_over_freq}
+\end{equation}
+
+To express frequency as a function of period, \\
+\textit{Inference rule}: multiply both sides of Eq.~\ref{eq:period_eq_1_over_freq} by $f$ to get Eq.~\ref{eq:period_freq_eq_1},
+\begin{equation}
+T\ f=1.
+\label{eq:period_freq_eq_1}
+\end{equation}
+\textit{Inference rule}:  divide both sides of Eq.~\ref{eq:period_freq_eq_1} by $T$ to yield the Eq.~\ref{eq:freq_eq_1_over_period}, 
+\begin{equation}
+  f=1/T.  
+  \label{eq:freq_eq_1_over_period}
+\end{equation}
+
+\textit{Inference rule}: Eq.~\ref{eq:freq_eq_1_over_period} is the final equation.
+
+\ \\
+
+For the inference rules ``multiply both sides by" and ``divide both sides by"  there was a parameter needed beyond the expressions. In the \pdg{} this parameter is called a \gls{feed}.
+
+Each inference rule takes expressions as input and produce expressions as output. An inference rule can be considered as a function that operates on expressions and produces expressions.
+
+While writing out the inference rules is tedious, the purpose of being explicit is to enable validation by a computer algebra system. The \pdg{} uses SymPy for this purpose. 
+
+\subsection{SymPy Inference rules}
+
+Writing the ``multiply both sides by" inference rule in SymPy,
+% https://live.sympy.org/
+\begin{minted}{python}
+import sympy
+T, f = sympy.symbols('T f')
+eq1 = sympy.Eq(T, 1/f)
+eq2 = sympy.Eq(T*f, 1)
+
+def multiply_both_sides_by(eq1, eq2, feed):
+    eq1_lhs_after = eq1.lhs * feed
+    eq1_rhs_after = eq1.rhs * feed
+
+    lhs_compare = eq1_lhs_after - eq2.lhs 
+    rhs_compare = eq1_rhs_after - eq2.rhs 
+
+    if (lhs_compare==0) and (rhs_compare==0):
+        print("step is correct")
+        return True
+    else:
+        print("LHS difference:", lhs_compare)
+        print("RHS difference:", rhs_compare)
+        return False
+\end{minted}
+
+This function validates that the rule was applied correctly but depends on the expressions being provided as SymPy rather than \LaTeX. SymPy bridges this by including the ability to parse \LaTeX into SymPy:
+
+\begin{minted}{python}
+import sympy
+from sympy.parsing.latex import parse_latex 
+symp_expr = parse_latex(expr_latex)
+\end{minted}
+% TODO

@@ -1,0 +1,6 @@
+\section{Schema and data structure\label{sec:schema}}
+
+In previous sections the concepts of expressions and inference rules have been introduced. Here a few additional terms are defined, enabling a schema -- how the terms are related.
+
+A \gls{derivation} is comprised of a sequence of \glspl{step}, and each step is comprised of an inference rule connected to one or more mathematical expressions.
+The nodes in the \pdg{} are mathematical expressions, feeds, and inference rules. Every mathematical expression is connected to an inference rule by a directed edge. Similarly, there is an edge between every feed and an inference rule. No two expressions are directly connected without an inference rule between them, and no two inference rules are connected directly without an expression between them. 
